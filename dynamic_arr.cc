@@ -30,8 +30,31 @@ void print2DArray(T** arr, int M, int N) {
     }
 }
 
+// Test function for float type
+int TestFloat(void)
+{
+    int M = 3, N = 4;
+    float** myFloatArray = allocate2DArray<float>(M, N);
 
-int main(void)
+    // Initialize the array with some values
+    for (int i = 0; i < M; i++) {
+        for (int j = 0; j < N; j++) {
+            myFloatArray[i][j] = static_cast<float>(i * N + j) + 0.5f;
+        }
+    }
+
+    // Print the array
+    print2DArray(myFloatArray, M, N);
+
+    // Deallocate the array
+    deallocate2DArray(myFloatArray, M);
+
+    return 0;
+  
+}
+
+// Test function for int type
+int TestInt(void)
 {
     int M = 3, N = 4;
     int** myArray = allocate2DArray<int>(M, N);
@@ -51,4 +74,16 @@ int main(void)
 
     return 0;
   
+}
+
+// Main function to test the 2D array allocation and deallocation
+int main(void)
+{
+    cout << "Testing 2D Array of int:" << endl;
+    TestInt();
+
+    cout << "\nTesting 2D Array of float:" << endl;
+    TestFloat();
+
+    return 0;
 }
