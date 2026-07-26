@@ -69,7 +69,9 @@ public:
             // 偷取资源
             m_buffer = other.m_buffer;
             m_length = other.m_length;
+            // 缺少std::strcpy，因为我们直接接管了指针，不需要复制内容
 
+            // 将 other 置为安全状态
             other.m_buffer = nullptr;
             other.m_length = 0;
         }
