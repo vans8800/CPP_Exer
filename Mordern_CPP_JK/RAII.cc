@@ -71,7 +71,7 @@ void demo_normal_scope() {
 void demo_exception_safety() {
     std::cout << "\n=== 演示 2: 异常安全 ===\n";
     try {
-        shape_wrapper wrapper(new circle(3.14));
+        shape_wrapper wrapper(new circle(3.14)); // 在堆上创建 circle，并由 wrapper 管理; 将资源生命周期绑定到 wrapper 栈对象上
         std::cout << "当前形状: " << wrapper.get()->name() << "\n";
         
         // 模拟业务逻辑中抛出异常
